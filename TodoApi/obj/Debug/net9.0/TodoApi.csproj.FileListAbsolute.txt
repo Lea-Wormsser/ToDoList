@@ -131,3 +131,4 @@ D:\Users\User\Documents\תכנות שנה ב\פרקטיקוד\ToDoList\TodoApi\b
 D:\Users\User\Documents\תכנות שנה ב\פרקטיקוד\ToDoList\TodoApi\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\Users\User\Documents\תכנות שנה ב\פרקטיקוד\ToDoList\TodoApi\obj\Debug\net9.0\TodoApi.MvcApplicationPartsAssemblyInfo.cs
 D:\Users\User\Documents\תכנות שנה ב\פרקטיקוד\ToDoList\ToDoApi\bin\Debug\net9.0\package-lock.json
+D:\Users\User\Documents\תכנות שנה ב\פרקטיקוד\ToDoList\ToDoApi\obj\Debug\net9.0\TodoApi.sourcelink.json
