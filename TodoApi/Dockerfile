@@ -1,3 +1,36 @@
+# FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
+# WORKDIR /app
+# EXPOSE 80
+# EXPOSE 443
+
+# ENV ASPNETCORE_URLS=http://+:80
+
+# FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+# ARG configuration=Release
+# WORKDIR /src
+# # COPY ["TodoApi/TodoApi.csproj", "TodoApi/"]
+# # RUN dotnet restore "TodoApi/TodoApi.csproj"
+
+# COPY ["TodoApi.csproj", "./"]
+
+# RUN dotnet restore "TodoApi.csproj"
+
+# COPY . .
+# # WORKDIR "/src/TodoApi"
+# WORKDIR /app
+# RUN dotnet build "TodoApi.csproj" -c $configuration -o /app/build
+
+# FROM build AS publish
+# ARG configuration=Release
+# RUN dotnet publish "TodoApi.csproj" -c $configuration -o /app/publish /p:UseAppHost=false
+
+# FROM base AS final
+# WORKDIR /app
+# COPY --from=publish /app/publish .
+# ENTRYPOINT ["dotnet", "TodoApi.dll"]
+
+
+
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 WORKDIR /app
 EXPOSE 80
@@ -5,19 +38,20 @@ EXPOSE 443
 
 ENV ASPNETCORE_URLS=http://+:80
 
-FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG configuration=Release
 WORKDIR /src
-# COPY ["TodoApi/TodoApi.csproj", "TodoApi/"]
-# RUN dotnet restore "TodoApi/TodoApi.csproj"
 
+# הקובץ באמת נמצא כאן
 COPY ["TodoApi.csproj", "./"]
 
 RUN dotnet restore "TodoApi.csproj"
 
 COPY . .
-# WORKDIR "/src/TodoApi"
-WORKDIR /app
+
+# פה היינו צריכות להיות!
+WORKDIR /src
+
 RUN dotnet build "TodoApi.csproj" -c $configuration -o /app/build
 
 FROM build AS publish
